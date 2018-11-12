@@ -36,7 +36,14 @@ public class GameBoard {
         pieceBoard[6][0] = new Lion(6,0,0);
         pieceBoard[6][2] = new Rat(6,2,0);
         // Player2 side
-
+        pieceBoard[0][8] = new Lion(0,8,1);
+        pieceBoard[0][6] = new Rat(0,6,1);
+        pieceBoard[2][6] = new Leopard(2,6,1);
+        pieceBoard[4][6] = new Wolf(4,6,1);
+        pieceBoard[6][6] = new Elephant(6,6,1);
+        pieceBoard[1][7] = new Dog(1,7,1);
+        pieceBoard[5][7] = new Cat(5,7,1);
+        pieceBoard[6][8] = new Tiger(6,8,1);
     }
 
     public boolean isAdj(int oldX, int oldY, int newX, int newY){
@@ -93,7 +100,8 @@ public class GameBoard {
     public Piece getPiece(int x, int y){
         return pieceBoard[x][y];
     }
-    public void setPiece(int x, int y, Piece piece){
+    public void setPiece(int x, int y, int oldX, int oldY, Piece piece){
         pieceBoard[x][y] = piece;
+        pieceBoard[oldX][oldY] = null;
     }
 }
