@@ -22,18 +22,18 @@ public abstract class Piece {
         }
         Piece other = gameBoard.getPiece(newXPosition, newYPosition);
         if (other != null){ // if there is a piece on it
-            if (ableToCapture(other)){
+            if (ableToCapture(other, gameBoard)){
                 gameBoard.setPiece(newXPosition, newYPosition, this);
             }
         }
         else {// There is no piece on it and we can directly move to the new position
-            gameBoard.setPiece(newXPosition, newYPosition, xPosition, yPosition, this);
+            gameBoard.setPiece(newXPosition, newYPosition, this);
         }
 
     }
 
-    public boolean ableToCapture(Piece other){
-        if(other.rank <= this.rank){
+    public boolean ableToCapture(Piece other, GameBoard gameBoard){
+        if(other.rank <= this.rank || gameBoard.isTrap(other.getX(), other.getY())){
             return true;
         }
         else{
@@ -41,6 +41,17 @@ public abstract class Piece {
         }
     }
 
+    public int getX(){
+        return xPosition;
+    }
+
+    public int getY(){
+        return yPosition;
+    }
+
+    public int getSide(){
+        return side;
+    }
 
 
 }

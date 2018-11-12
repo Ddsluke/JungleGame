@@ -10,12 +10,12 @@ public class GameBoard {
 
     public GameBoard(){
         board[2][0] = Area.TRAP;
-        board[3][0] = Area.DEN;
+        board[3][0] = Area.DEN;// Coordinate 3,0
         board[4][0] = Area.TRAP;
         board[3][1] = Area.TRAP;
         // Player1 side
         board[2][8] = Area.TRAP;
-        board[3][8] = Area.DEN;
+        board[3][8] = Area.DEN;// Coordinate 3,8
         board[4][8] = Area.TRAP;
         board[3][7] = Area.TRAP;
         // Player2 side
@@ -100,8 +100,8 @@ public class GameBoard {
     public Piece getPiece(int x, int y){
         return pieceBoard[x][y];
     }
-    public void setPiece(int x, int y, int oldX, int oldY, Piece piece){
+    public void setPiece(int x, int y, Piece piece){
         pieceBoard[x][y] = piece;
-        pieceBoard[oldX][oldY] = null;
+        pieceBoard[piece.getX()][piece.getY()] = null;
     }
 }
