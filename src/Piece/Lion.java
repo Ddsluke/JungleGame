@@ -7,13 +7,13 @@ public class Lion extends Piece {
         super(x, y, side);
         rank = 7;
     }
-
+    @Override
     public void move(int newXPosition, int newYPosition, GameBoard gameBoard){
         if (gameBoard.isRiver(newXPosition, newYPosition)){// If the new position is type RIVER then return.
             return;
         }
         else if (!(gameBoard.isAcrossWater(xPosition, yPosition, newXPosition, newYPosition) || gameBoard.isAdj(xPosition,yPosition,newXPosition,newYPosition))){
-            return;
+            return;//if the lion neither move to adjacent position nor jump to the otherside over the river then return.
         }
         Piece other = gameBoard.getPiece(newXPosition, newYPosition);
         if (other != null){ // if there is a piece on it
