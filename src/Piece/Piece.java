@@ -17,6 +17,9 @@ public abstract class Piece {
         if (!gameBoard.isAdj(xPosition,yPosition,newXPosition,newYPosition)){
             return; // If two blocks are not adjacent then the command is in invalid.
         }
+        else if(newXPosition<0||newXPosition>6||newYPosition<0||newYPosition>8){
+            return;//indexOutofBound
+        }
         else if (gameBoard.isRiver(newXPosition, newYPosition)){// If the new position is type RIVER then return.
             return;
         }
