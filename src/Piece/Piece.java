@@ -27,7 +27,7 @@ public abstract class Piece {
             }
         }
         else {// There is no piece on it and we can directly move to the new position
-            gameBoard.setPiece(newXPosition, newYPosition, this);
+            gameBoard.setPiece(newXPosition, newYPosition, xPosition, yPosition, this);
         }
 
     }
