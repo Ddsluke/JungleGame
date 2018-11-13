@@ -2,7 +2,7 @@ package Piece;
 
 import Board.GameBoard;
 
-public class Piece {
+public abstract class Piece {
     int xPosition;
     int yPosition;
     int rank;
