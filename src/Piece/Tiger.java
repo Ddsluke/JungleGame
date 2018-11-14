@@ -17,12 +17,16 @@ public class Tiger extends Piece {
         }
         Piece other = gameBoard.getPiece(newXPosition, newYPosition);
         if (other != null){ // if there is a piece on it
-            if (ableToCapture(other)){
+            if (ableToCapture(other, gameBoard)){
                 gameBoard.setPiece(newXPosition, newYPosition, this);
+                xPosition = newXPosition;
+                yPosition = newYPosition;
             }
         }
         else {// There is no piece on it and we can directly move to the new position
             gameBoard.setPiece(newXPosition, newYPosition, this);
+            xPosition = newXPosition;
+            yPosition = newYPosition;
         }
     }
 }

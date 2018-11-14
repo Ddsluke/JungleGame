@@ -20,16 +20,20 @@ public class Rat extends Piece {
                     || gameBoard.isRiver(newXPosition, newYPosition) && (!gameBoard.isRiver(xPosition,yPosition))) {
                     return;// If any of the Area is a RIVER type then it cannot move towards it
             }
-            else if (ableToCapture(other)){
+            else if (ableToCapture(other,gameBoard)){
                 gameBoard.setPiece(newXPosition, newYPosition, this);
+                xPosition = newXPosition;
+                yPosition = newYPosition;
             }
         }
         else {// There is no piece on it and we can directly move to the new position
             gameBoard.setPiece(newXPosition, newYPosition, this);
+            xPosition = newXPosition;
+            yPosition = newYPosition;
         }
     }
     @Override
-    public boolean ableToCapture(Piece other){
+    public boolean ableToCapture(Piece other, GameBoard gameBoard){
         if(other.rank <= this.rank){
             return true;
         }

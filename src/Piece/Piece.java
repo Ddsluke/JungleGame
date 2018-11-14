@@ -14,11 +14,11 @@ public abstract class Piece {
         this.side = side;
     }
     public void move(int newXPosition, int newYPosition, GameBoard gameBoard){
-        if (!gameBoard.isAdj(xPosition,yPosition,newXPosition,newYPosition)){
-            return; // If two blocks are not adjacent then the command is in invalid.
-        }
-        else if(newXPosition<0||newXPosition>6||newYPosition<0||newYPosition>8){
+        if(newXPosition<0||newXPosition>6||newYPosition<0||newYPosition>8){
             return;//indexOutofBound
+        }
+        else if (!gameBoard.isAdj(xPosition,yPosition,newXPosition,newYPosition)){
+            return; // If two blocks are not adjacent then the command is in invalid.
         }
         else if (gameBoard.isRiver(newXPosition, newYPosition)){// If the new position is type RIVER then return.
             return;
@@ -27,10 +27,14 @@ public abstract class Piece {
         if (other != null){ // if there is a piece on it
             if (ableToCapture(other, gameBoard)){
                 gameBoard.setPiece(newXPosition, newYPosition, this);
+                this.xPosition = newXPosition;
+                this.yPosition = newYPosition;
             }
         }
         else {// There is no piece on it and we can directly move to the new position
             gameBoard.setPiece(newXPosition, newYPosition, this);
+            this.xPosition = newXPosition;
+            this.yPosition = newYPosition;
         }
 
     }
