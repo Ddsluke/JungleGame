@@ -61,4 +61,17 @@ public class Tiger extends Piece {
             else return false;
         }
     }
+    @Override
+    public Piece[] avaiPos(GameBoard gameBoard){
+        Piece[] avaiPieces = new Piece[4];
+        int index = 0;
+        for(int i = 0; i < 7; i++){
+            for(int j = 0; j < 9; j++){
+                if (this.isAvailable(i, j, gameBoard)){
+                    avaiPieces[index++] = gameBoard.getPiece(i,j);
+                }
+            }
+        }
+        return avaiPieces;
+    }    
 }
