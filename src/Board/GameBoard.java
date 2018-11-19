@@ -79,13 +79,13 @@ public class GameBoard {
         if (newX == oldX){
             if(oldY<newY){//jump rightward
                 for(int i = oldY+1;i<newY;i++){
-                    if(board[oldX][i] != Area.RIVER){
+                    if(board[oldX][i] != Area.RIVER||getPiece(oldX,i)!=null){
                         return false;
                     }
                 }
             else{//jump leftward
                 for(int i = oldY-1;i>newY;i--){
-                    if(board[oldX][i] != Area.RIVER){
+                    if(board[oldX][i] != Area.RIVER||getPiece(oldX,i)!=null){
                         return false;
                     }
                 }
@@ -95,14 +95,14 @@ public class GameBoard {
         else if (newY == oldY){
             if(oldX<newX){//jump downward
                 for(int i = oldX+1; i <newX;i++){
-                    if(board[i][oldY] != Area.RIVER){
+                    if(board[i][oldY] != Area.RIVER||getPiece(i,oldY)!=null){
                         return false;
                     }
                 }
             }
             else{//jump upward
                 for(int i = oldX-1;i>newX;i--){
-                    if(board[i][oldY] != Area.RIVER){
+                    if(board[i][oldY] != Area.RIVER||getPiece(i,oldY)!=null){
                         return false;
                     }
                 }
