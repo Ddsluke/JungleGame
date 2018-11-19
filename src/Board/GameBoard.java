@@ -77,17 +77,34 @@ public class GameBoard {
 
     public boolean isAcrossWater(int oldX, int oldY, int newX, int newY){
         if (newX == oldX){
-            for (int i = oldY + 1; i < newY; i++){
-                if (board[oldX][i] != Area.RIVER) {
-                    return false;
+            if(oldY<newY){//jump rightward
+                for(int i = oldY+1;i<newY;i++){
+                    if(board[oldX][i] != Area.RIVER){
+                        return false;
+                    }
+                }
+            else{//jump leftward
+                for(int i = oldY-1;i>newY;i--){
+                    if(board[oldX][i] != Area.RIVER){
+                        return false;
+                    }
                 }
             }
             return true;
         }
         else if (newY == oldY){
-            for (int i = oldX + 1; i < newX; i++){
-                if (board[oldY][i] != Area.RIVER){
-                    return false;
+            if(oldX<newX){//jump downward
+                for(int i = oldX+1; i <newX;i++){
+                    if(board[i][oldY] != Area.RIVER){
+                        return false;
+                    }
+                }
+            }
+            else{//jump upward
+                for(int i = oldX-1;i>newX;i--){
+                    if(board[i][oldY] != Area.RIVER){
+                        return false;
+                    }
                 }
             }
             return true;
