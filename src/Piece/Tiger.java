@@ -44,7 +44,7 @@ public class Tiger extends Piece {
         if (gameBoard.isRiver(newXPosition, newYPosition)){// If the new position is type RIVER then return.
             return false;
         }
-        else if (!(gameBoard.isAcrossWater(xPosition, yPosition, newXPosition, newYPosition) || gameBoard.isAdj(xPosition,yPosition,newXPosition,newYPosition))){
+        else if (!(gameBoard.isAcrossWater(xPosition, yPosition, newXPosition, newYPosition) && gameBoard.isAdj(xPosition,yPosition,newXPosition,newYPosition))){
             return false;// If the tiger neither moves to adjacent position nor jumps to the other side over the river then return.
         }
         Piece other = gameBoard.getPiece(newXPosition, newYPosition);
